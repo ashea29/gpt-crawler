@@ -94,7 +94,7 @@ function traverseToken({
         modeId,
         "COLOR",
         key,
-        parseColor(object.$value)
+        parseColor(object.$value),
       );
     } else if (type === "number") {
       tokens[key] = createToken(
@@ -102,7 +102,7 @@ function traverseToken({
         modeId,
         "FLOAT",
         key,
-        object.$value
+        object.$value,
       );
     } else {
       console.log("unsupported type", type, object);
@@ -150,7 +150,7 @@ async function processCollection({ name, modes, variableIds }) {
         obj.$type = resolvedType === "COLOR" ? "color" : "number";
         if (value.type === "VARIABLE_ALIAS") {
           const currentVar = await figma.variables.getVariableByIdAsync(
-            value.id
+            value.id,
           );
           obj.$value = `{${currentVar.name.replace(/\//g, ".")}}`;
         } else {
@@ -231,7 +231,7 @@ function parseColor(color) {
     const [, h, s, l, a] = color.match(hslaRegex);
     return Object.assign(
       hslToRgbFloat(parseInt(h), parseInt(s) / 100, parseInt(l) / 100),
-      { a: parseFloat(a) }
+      { a: parseFloat(a) },
     );
   } else if (hexRegex.test(color)) {
     const hexValue = color.substring(1);
