@@ -1,11 +1,11 @@
 import { Config } from "./src/config";
 
 export const defaultConfig: Config = {
-  url: "https://docs.tokens.studio/variables/creating-variables/",
-  match: "https://docs.tokens.studio/variables/creating-variables/**",
-  selector: "article.nextra-body",
-  maxPagesToCrawl: 10,
-  outputFileName: "output/tokens-conversion-strategy.json",
+  url: "https://www.w3.org/WAI/ARIA/apg/patterns/",
+  match: "https://www.w3.org/WAI/ARIA/apg/patterns/**/**",
+  selector: "main#main",
+  maxPagesToCrawl: 100,
+  outputFileName: "output/aria-patterns.json",
   resourceExclusions: [
     "png",
     "jpg",
